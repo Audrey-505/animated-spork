@@ -22,3 +22,15 @@ fetch(genreURL)
     console.log(names)
     genreMovies(names)
 })
+
+function genreMovies(a){
+    $(genreSelect).append(`
+        <label for="genreSelec">Pick A Genre</label>
+        <select class="form-control" onchange="" id="genreSelec">
+        <option>Select A Genre</option>
+        ${a.map(e => {
+            console.log(e)
+        return `<option>${e}</option>`
+        })}
+     `)
+    }
