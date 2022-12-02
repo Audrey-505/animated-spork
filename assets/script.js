@@ -4,6 +4,8 @@ var movieInfo = document.getElementById('movieInfo')
 var apiKey = '8c0c06e88273c64c213af99ab1b69d08'
 
 var genreURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
+var movieProviders = `https://api.themoviedb.org/3/movie/403/watch/providers?api_key=${apiKey}`
+var trendingMovies = `https://api.themoviedb.org/3/movie/403?api_key=${apiKey}`
 
 fetch(genreURL)
 .then(function (response){
