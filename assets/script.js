@@ -34,3 +34,44 @@ function genreMovies(a){
         })}
      `)
     }
+
+    discoverURL = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US`
+
+fetch(discoverURL)
+.then(function (response){
+    return response.json()
+})
+.then(function (data){
+    console.log(data)
+    var dataArray = data.results
+    var titles = dataArray.map(e => e.title)
+    var overview = dataArray.map(e => e.overview)
+    discoverMovies(titles, overview)
+})
+
+function discoverMovies(f, i){
+ $(movieInfo).append(`
+ <thead>
+    <tr>
+      <th scope="col">Movie Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    ${f.map(e => {
+        return `<td>${e}</td>`
+    })}
+ `)
+ $(movieInfo).append(`
+ <thead>
+    <tr>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    ${i.map(e => {
+        return `<td>${e}</td>`
+    })}
+ `)
+}
