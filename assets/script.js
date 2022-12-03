@@ -48,44 +48,58 @@ fetch(discoverURL)
     var titles = dataArray.map(e => e.title)
     var overview = dataArray.map(e => e.overview)
     var releaseDate = dataArray.map(e => e.release_date)
-    discoverMovies(titles, overview, releaseDate)
+    var poster = dataArray.map(e => e.poster_path)
+    discoverMovies(titles, overview, releaseDate, poster)
 })
 
-function discoverMovies(f, i, g){
- $(movieInfo).append(`
- <thead>
-    <tr>
-      <th scope="col">Movie Title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    ${f.map(e => {
-        return `<td>${e}</td>`
-    })}
- `)
- $(movieInfo).append(`
- <thead>
-    <tr>
-      <th scope="col">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    ${i.map(e => {
-        return `<td>${e}</td>`
-    })}
- `)
- $(movieInfo).append(`
-<thead>
-    <tr>
-      <th scope="col">Release Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    ${g.map(e => {
-        return `<td>${e}</td>`
-    })}
-`)
-}
+function discoverMovies(f, i, g, p){
+    $(movieInfo).append(`
+    <thead>
+       <tr>
+         <th scope="col">Movie Title</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${f.map(e => {
+           return `<td>${e}</td>`
+       })}
+    `)
+    $(movieInfo).append(`
+    <thead>
+       <tr>
+         <th scope="col">Description</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${i.map(e => {
+           return `<td>${e}</td>`
+       })}
+    `)
+    $(movieInfo).append(`
+   <thead>
+       <tr>
+         <th scope="col">Release Date</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${g.map(e => {
+           return `<td>${e}</td>`
+       })}
+   `)
+   $(movieInfo).append(`
+   <thead>
+       <tr>
+         <th scope="col">Poster</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+   ${p.map(e => {
+       var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
+       return `<td><img src="${baseImgURL}" alt="movie poster"></td>`
+   })}
+   `)
+   }
