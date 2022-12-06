@@ -19,42 +19,43 @@
       </div>
       <div class="menu-container">
         <ul class="menu-list">
-          <li class="menu-list-item active">Home</li>
-          <li class="menu-list-item">Trends</li>
-          <li class="menu-list-item"><a href="#" id="genre-list-item">Genre</a>
+          <li class="menu-list-item active">
+            <a href="#home">Home</a></li>
+          <li class="menu-list-item active">
+            <a href="#pop-movies">Popular Movies</a></li>
+          <li class="menu-list-item active"><a href="#" id="genre-list-item">Genre</a>
             <div class="genre-dropdown">
-                <select class="form-select form-select-lg" aria-label="Default select example">
-                  <option id="genreSelect">Genres</option>
+                <select class="form-select form-select-lg" id="genreSelect" aria-label="Default select example">
                 </select>
-          </li>
-          <div></div>
-          <li class="menu-list-item">Search
-            <div class="search-wrapper">
-              <input type="search" id="search" style="border-radius: 50px;">
             </div>
-            <!-- add api here so you can search movies?? -->
           </li>
+          <!-- <li class="menu-list-item">Search -->
+            <!-- <div class="search-wrapper">
+              <input type="search" id="search" style="border-radius: 50px;">
+            </div> -->
+            <!-- add api here so you can search movies?? -->
+          <!-- </li> -->
         </ul>
       </div>
-      <div class="profile-container">
+      <!-- <div class="profile-container">
         <img class="profile-picture" src="images/profile-avatar.png" alt="">
         <div class="profile-text-container">
           <span class="profile-text">Profile</span>
           <i class="fa-solid fa-sort-down down-arrow"></i>
         </div>
-        <!-- toggle to shift from light to dark mode (22min video) -->
-        <!-- <div class="toggle">
+        toggle to shift from light to dark mode (22min video)
+        <div class="toggle">
           <i class="fa-solid fa-moon toggle-icon"></i>
-          <i class="fa-solid fa-sun toggle-icon"></i>
-           -->
+          <i class="fa-solid fa-sun toggle-icon"></i> -->
+          
           <!-- <div class="toggle ball">
             <i class="fa-solid fa-circle"></i> -->
           <!-- </div> -->
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
   </div>
-  <div class="sidebar">
+  <!-- <div class="sidebar">
     <i class="sidebar-menu-icon fa-solid fa-magnifying-glass"></i>
     <i class="sidebar-menu-icon fa-solid fa-house"></i>
     <i class="sidebar-menu-icon fa-solid fa-users"></i>
@@ -62,47 +63,22 @@
     <i class="sidebar-menu-icon fa-solid fa-tv"></i>
     <i class="sidebar-menu-icon fa-solid fa-hourglass-start"></i>
     <i class="sidebar-menu-icon fa-solid fa-cart-shopping"></i>
-  </div>
+  </div> -->
 <!-- api for disover by popularity should function here -->
-<div class="container-top">
-  <div class="content-container">
-    <div class="featured-content">This is where API movie input will need to be added.
-      <p class="movie-discription">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere eius veritatis, dolorem reprehenderit qui mollitia quia perspiciatis nam, quis laborum dolorum? Voluptatibus cumque alias saepe cum quae ipsum sunt reprehenderit!</p>
-      <button class="featured-button">WATCH</button>
+  <div class="container-top" id="home">
+    <div class="content-container">
+      <div class="featured-content">This is where API movie input will need to be added.
+        <p class="movie-discription">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere eius veritatis, dolorem reprehenderit qui mollitia quia perspiciatis nam, quis laborum dolorum? Voluptatibus cumque alias saepe cum quae ipsum sunt reprehenderit!</p>
+        <button class="featured-button">WATCH</button>
+      </div>
     </div>
-
-<!-- ?REMOVE/ MOVE BELOW? -->
-    <div id="movieInfo">
-
-    </div>
-
-    <!--Contact Us-->
-    <div class="container-fluid">
-      <form>
-        <div class="row mb-3">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3">
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-            <label for="floatingTextarea2">Comments</label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-  </div>
-  <div class="popular-movies">
+  <div class="popular-movies" id="pop-movies">
     <h1>Popular Movies</h1>
   </div>
   </div>
-</div>
-<div class="container-bottom">
-  <main id="main">
-    <div class="movie">  
+  <div class="container-bottom">
+    <main id="main">
+     <div class="movie">  
       <img src="./images/profile-avatar.png" alt="Image">
 
       <div class="movie-info">
@@ -180,9 +156,3 @@
 </body>
 
 </html>
-
-
-    
-     
-
-
