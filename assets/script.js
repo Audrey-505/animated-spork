@@ -76,51 +76,54 @@ $(genreSelect).append(`
 
 
 
-// audreys_branch
 function discoverMovies(f, i, g, p){
     $(movieInfo).append(`
-    <table class="table">
-      <tr>
-        <th>Movie Title</th>
-      </tr>
-    <tbody>
-      <tr>
-        ${f.map(e => {
-          return `<tr>${e}</tr>`
-      })}
-        ${i.map(e => {
-          return `<tr>${e}</tr>`
-      })}
-        ${g.map(e => {
-          return `<tr>${e}</tr>`
-      })}
-        ${p.map(e => {
-          var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
-          return `<td><img src="${baseImgURL}" alt="movie poster">`
-        })}
-      </td>
-    </tbody>
-  </table>
+    <thead>
+       <tr>
+         <th scope="col">Movie Title</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${f.map(e => {
+           return `<td>${e}</td>`
+       })}
+    `)
+    $(movieInfo).append(`
+    <thead>
+       <tr>
+         <th scope="col">Description</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${i.map(e => {
+           return `<td>${e}</td>`
+       })}
+    `)
+    $(movieInfo).append(`
+   <thead>
+       <tr>
+         <th scope="col">Release Date</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+       ${g.map(e => {
+           return `<td>${e}</td>`
+       })}
    `)
-    }
-    
-// function getMovie(search) {
-//   console.log("Im here")
-//   let apiUrl = `https://api.themoviedb.org/3/search/507086?api_key=${apiKey}&language=en-US&page=1&include_adult=false` 
-  
-//   fetch(apiUrl)
-//   .then(function (res){
-//     return res.json()
-//   })
-//   .then(function (data){
-//     console.log(data[0])
-//   })
-//   .catch(error => {
-//     console.log('errror');
-//     console.log(error);
-//   });
-//   // .catch(function (error){
-//   //   console.error(error)
-//   // })
-// }
-
+   $(movieInfo).append(`
+   <thead>
+       <tr>
+         <th scope="col">Poster</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+   ${p.map(e => {
+       var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
+       return `<td><img src="${baseImgURL}" alt="movie poster"></td>`
+   })}
+   `)
+   }
