@@ -54,52 +54,27 @@ fetch(discoverURL)
 
 function discoverMovies(f, i, g, p){
     $(movieInfo).append(`
-    <thead>
-       <tr>
-         <th scope="col">Movie Title</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-       ${f.map(e => {
-           return `<td>${e}</td>`
-       })}
-    `)
-    $(movieInfo).append(`
-    <thead>
-       <tr>
-         <th scope="col">Description</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-       ${i.map(e => {
-           return `<td>${e}</td>`
-       })}
-    `)
-    $(movieInfo).append(`
-   <thead>
-       <tr>
-         <th scope="col">Release Date</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-       ${g.map(e => {
-           return `<td>${e}</td>`
-       })}
+    <table class="table">
+      <tr>
+        <th>Movie Title</th>
+      </tr>
+    <tbody>
+      <tr>
+        ${f.map(e => {
+          return `<tr>${e}</tr>`
+      })}
+        ${i.map(e => {
+          return `<tr>${e}</tr>`
+      })}
+        ${g.map(e => {
+          return `<tr>${e}</tr>`
+      })}
+        ${p.map(e => {
+          var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
+          return `<td><img src="${baseImgURL}" alt="movie poster">`
+        })}
+      </td>
+    </tbody>
+  </table>
    `)
-   $(movieInfo).append(`
-   <thead>
-       <tr>
-         <th scope="col">Poster</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr>
-   ${p.map(e => {
-       var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
-       return `<td><img src="${baseImgURL}" alt="movie poster"></td>`
-   })}
-   `)
-   }
+    }
