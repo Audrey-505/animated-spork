@@ -253,6 +253,7 @@ main{
     max-height: 100%;
     transform: translateY(+101%);
     transition: transform 0.3s ease-in;
+    color:black;
 }
 .movie:hover .overview{
     transform: translateY(0);
@@ -298,7 +299,6 @@ main{
 .img{
     width: 100px;
 }
-
 
 .genreHide {
     display: none;
