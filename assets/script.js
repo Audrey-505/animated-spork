@@ -109,7 +109,7 @@ function indivMovie(t, o, pI, r){
     <h3>${t}</h3>
     <h4>${r}</h4>
     <div id="poster">
-    <img src="${baseImgURL}" alt="movie poster">
+    <img src="${baseImgURL}" alt="movie poster" width="200px" height="250px">
     </div>
     <div id="description">
     <p>${o}</p>
