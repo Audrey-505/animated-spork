@@ -1,4 +1,3 @@
-// var genreSelec = document.getElementById('genreSelec')
 var movieInfo = document.getElementById('movieInfor')
 var nxtPage = document.getElementById('nxtPage')
 //var movieList = JSON.parse(localStorage.getItem('movieList'))|| []
@@ -58,58 +57,6 @@ var populateGenreDropdown = (genreList) => {
 function eraseGenre(){
     $('#genreSelect').addClass('genreHide')
 }
-
-// WORKING DROP DOWN
-// function genreMovies(a){
-//     $(genreSelect).append(`
-//         ${a.map(e => {
-//             //console.log(e)
-//         //console.log(`<option>${e}</option>`)
-//         return `<option>${e}</option>`
-//         })}
-//      `)
-//     }
-    
-// WORKING
-// function genreMovies(a){
-// $(genreSelect).append(`
-//     <label for="genreSelec">Pick A Genre</label>
-//     <select class="form-control" onchange="getGenre" id="genreSelec">
-//     <option>Select A Genre</option>
-//     ${a.map(e => {
-//         //console.log(e)
-//     //console.log(`<option>${e}</option>`)
-//     return `<option>${e}</option>`
-//     })}
-//  `)
-// }
-
-// function genreMovies(a, b){
-//     $(genreSelect).append(`
-//         <label for="genreSelec">Pick A Genre</label>
-//         <select class="form-control" onchange="getGenre" id="genreSelec">
-//         <option>Select A Genre</option>
-//         ${Object.keys(a).map(function (b, c){
-//             return `<option id="${b}">${c}</option>`
-
-//         })}
-        
-//      `)
-//     }
-
-
-// function genreId(b){
-//     $(genreSelect).append(`
-//     <option>${e}</option>
-//     ${b.map(e => {
-//         console.log(e)
-//         return `<option class="movieids" id=${e}> </option>`
-//     })}
-//     `)
-// }
-
-// var need = $(movieids).id
-// console.log
 
 function getGenre(){
 var pickedGenre = document.getElementById('genreSelec').value
@@ -175,24 +122,6 @@ function indivMovie(t, o, pI, r){
     </div>`)
 }
 
-// function goodValue(event) {
-// var eventEl = event.target
-// console.log('event: ', eventEl.innerText)
-// console.log('data ', filmid)
-// var randomFilm = Math.floor(Math.random()*filmid.length)
-// console.log('random film', filmid[randomFilm])
-// var results = filmid[randomFilm]; 
-// if (eventEl.innerText !== 'Thumbs Up'){
-//     //var targetFilm =
-//      getMovie(results)
-//     //$(movieInfo).replaceWith(`targetFilm`)
-// } 
-// return 
-// }
-
-// movieInfo.onclick = goodValue 
-
-
 function goodValue(event) {
     var eventEl = event.target
     console.log('event: ', eventEl.innerText)
@@ -229,142 +158,9 @@ function goodValue(event) {
     
     movieInfo.onclick = goodValue 
 
-    //$('#againBtn').onclick(goAgain)
-
-    // function goAgain(e){
-    //     e.preventDefault()
-    //     //location.replace('/index.html'); 
-    //     console.log('hello')
-    // }
-    
-
-
-// NOT RESOLVED ATTEMPT TO LOOP TO NEXT MOVIE USING REPLACEWITH 
-
-        //indivMovie()
-        //console.log(`${targetFilm}`)
-        // var randomTitle = Math.floor(Math.random()*titles.length)
-        // console.log('randomTitle: ', titles[randomTitle])
-        
-        //$(movieInfo).replaceWith(`${targetFilm}`)
-        // <h4>${released}</h4>
-        // <div id="poster">
-        // <img src="" alt="movie poster">
-        // </div>
-        // <div id="description">
-        // <p>${overview}</p>
-        // </div>`)
-
-// FUNCTIONS TO DISPLAY 1ST MOVIE OF EACH SELECTED GENRE 
-// function indivMovie(t, o, pI, r){
-//     var baseImgURL = `https://image.tmdb.org/t/p/original/${pI}`
-//     $(movieInfo).append(`
-//     <h3>${t}</h3>
-//     <h4>${r}</h4>
-//     <div id="poster">
-//     <img src="${baseImgURL}" alt="movie poster">
-//     </div>
-//     <div id="description">
-//     <p>${o}</p>
-//     </div>
-//     <button>Thumbs Up</button> 
-//     <button>Thumbs Down</button>
-//     `)
-// }
-
-//DISPLAYS ALL MOVIES 
-// function discoverMovies(f, i, g, p){
-//  $(movieInfo).append(`
-//  <thead>
-//     <tr>
-//       <th scope="col">Movie Title</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//     ${f.map(e => {
-//         return `<td>${e}</td>`
-//     })}
-//  `)
-//  $(movieInfo).append(`
-//  <thead>
-//     <tr>
-//       <th scope="col">Description</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//     ${i.map(e => {
-//         return `<td>${e}</td>`
-//     })}
-//  `)
-//  $(movieInfo).append(`
-// <thead>
-//     <tr>
-//       <th scope="col">Release Date</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//     ${g.map(e => {
-//         return `<td>${e}</td>`
-//     })}
-// `)
-// $(movieInfo).append(`
-// <thead>
-//     <tr>
-//       <th scope="col">Poster</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-// ${p.map(e => {
-//     var baseImgURL = `https://image.tmdb.org/t/p/original/${e}`
-//     return `<td><img src="${baseImgURL}" alt="movie poster"></td>`
-// })}
-// `)
-// }
 }
 function goAgain(event){
     event.preventDefault()
     location.reload(); 
     console.log('hello')
 }
-// function nxtPageF (m, d, rd, pp){
-//     index++
-//     testNxtPage(m, d, rd, pp)
-// }
-    // var results = data.results
-    // results.map(titles => {
-    //     var titlesMovie = titles.title
-    //     return `<th scope="row">${titlesMovie}</th>`
-    // })
-
-//     var nameOfFirst = results[0].original_title
-//     //console.log(nameOfFirst)
-//     var overview = results[0].overview
-//     //console.log(overview)
-//     var releaseDate = results[0].release_date
-//     //console.log(releaseDate)
-//     var posterPath = results[0].poster_path
-//     //console.log(posterPath)
-//     $(movieInfo).append(`
-//     <table class="table">
-//   <thead>
-//     <tr>
-//       <th scope="col">Movie Title</th>
-//       <th scope="col">Overview</th>
-//       <th scope="col">Release Date</th>
-//       <th scope="col">Cover</th>
-//     </tr>
-//   </thead>
-//   <tbody>
-//     <tr>
-//       <th scope="row">${titlesMovie}</th>
-//       <td>${overview}</td>
-//       <td>${releaseDate}</td>
-//       <td>${posterPath}</td>
-//     </tr>
-//     </tbody>
-//   </table>
-//     `)
