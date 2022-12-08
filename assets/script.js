@@ -174,9 +174,9 @@ const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=8c0c06e8827
 const IMG_URL = `https://image.tmdb.org/t/p/w500/`
 const GENRE_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US`
 var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=8c0c06e88273c64c213af99ab1b69d08&query=`
-const main = document.getElementById('main')
-const form = document.getElementById('form')
-const search = document.getElementById('search')
+var main = document.getElementById('main')
+var form = document.getElementById('form')
+var search = document.getElementById('search')
 
 getMovies(API_URL)
 
@@ -222,13 +222,13 @@ form.addEventListener('submit', (e) => {
     }
 })
 
-function getColor(vote) {
-    if(vote> 6){
+function getColor(vote_average) {
+    if(vote_average > 7){
         return 'green'
-    }else if (vote<=6 ){
-        return 'yellow'
-    }else if(vote<= 5) {
+    }else if (vote_average  <= 6 ){
         return 'red'
+    }else if(vote_average  <= 7) {
+        return 'yellow'
     }
 }
     
