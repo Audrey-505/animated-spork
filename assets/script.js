@@ -207,39 +207,15 @@ function showMovies(data){
 
 }
 
-function getColor(vote) {
+function getColor(vote_average) {
     
-    if(vote > 6){
+    if(vote_average > 7){
         return "green"
-    }else if (vote <= 6 ){
-        return "yellow"
-    }else {
+    }else if (vote_average <= 6){
         return "red"
+    }else if (vote_average <= 7){
+        return "yellow"
         
     }
 }
     
-
-// fetch(GENRE_URL)
-// .then(function (response){
-//     return response.json()
-// })
-// .then(function (data){
-//     //console.log(data)
-//     var genreList = data.genres
-//     var names = genreList.map(e => e.name)
-//     //console.log(names)
-//     genreMovies(names)
-// })
-
-// function genreMovies(a){
-// $(genreSelect).append(`
-//     <label for="genreSelec">Pick A Genre</label>
-//     <select class="form-control" onchange="" id="genreSelec">
-//     <option>Select A Genre</option>
-//     ${a.map(e => {
-//         //console.log(e)
-//     return `<option>${e}</option>`
-//     })}
-//  `)
-// }

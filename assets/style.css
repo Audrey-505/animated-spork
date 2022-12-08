@@ -188,7 +188,7 @@ body{
     background: linear-gradient(#151515, black); 
     width: 100%;
     bottom: 0px;
-    margin-left: 50px;
+    margin-left: 0px;
     box-sizing: border-box;
 }
 
@@ -253,7 +253,7 @@ main{
     max-height: 100%;
     transform: translateY(+101%);
     transition: transform 0.3s ease-in;
-    color:black;
+    color: black;
 }
 .movie:hover .overview{
     transform: translateY(0);
