@@ -83,6 +83,7 @@ fetch(discoverURL)
     console.log(filmid)
     //getMovie(filmid)
     getMovie(filmid)
+    $('#movieInfor').html('')
     //discoverMovies(titles, overview, releaseDate, poster)
 })
 
