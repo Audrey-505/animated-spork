@@ -5,6 +5,8 @@ var nxtPage = document.getElementById('nxtPage')
 var apiKey = '8c0c06e88273c64c213af99ab1b69d08'
 
 var genreURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`
+var movieProviders = `https://api.themoviedb.org/3/movie/403/watch/providers?api_key=${apiKey}`
+var trendingMovies = `https://api.themoviedb.org/3/movie/403?api_key=${apiKey}`
 
 var results
 
@@ -83,6 +85,7 @@ fetch(discoverURL)
     console.log(filmid)
     //getMovie(filmid)
     getMovie(filmid)
+    $('#movieInfor').html('')
     //discoverMovies(titles, overview, releaseDate, poster)
 })
 
@@ -169,10 +172,11 @@ function goAgain(event){
 const API_KEY = '8c0c06e88273c64c213af99ab1b69d08';
 const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US`
 const IMG_URL = `https://image.tmdb.org/t/p/w500/`
-// const GENRE_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US`
-
-const main = document.getElementById('main')
-
+const GENRE_URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US`
+var searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=8c0c06e88273c64c213af99ab1b69d08&query=`
+var main = document.getElementById('main')
+var form = document.getElementById('form')
+var search = document.getElementById('search')
 
 getMovies(API_URL)
 
@@ -207,15 +211,25 @@ function showMovies(data){
 
 }
 
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    var searchValue = search.value
+    debugger;
+    if (searchValue && searchValue !== '') {
+        getMovies(searchUrl + searchValue)
+        searchValue = ''
+    } else {
+        window.location.reload()
+    }
+})
+
 function getColor(vote_average) {
-    
     if(vote_average > 7){
-        return "green"
-    }else if (vote_average <= 6){
-        return "red"
-    }else if (vote_average <= 7){
-        return "yellow"
-        
+        return 'green'
+    }else if (vote_average  <= 6 ){
+        return 'red'
+    }else if(vote_average  <= 7) {
+        return 'yellow'
     }
 }
     
