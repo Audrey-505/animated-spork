@@ -114,7 +114,7 @@ function indivMovie(t, o, pI, r){
     </div>
     <div id="description">
     <h3 id="minder-title">${t}</h3>
-    <h4 id="minder-date">${r}</h4>
+    <h4 id="minder-date">${moment(`${r}`).format("YYYY")}</h4>
     <p id="minder-desc">${o}</p>
     </div>
     `)
@@ -144,7 +144,9 @@ function goodValue(event) {
         localStorage.setItem(results, goodFilm.html())
         $(movieInfo).html(`Added to List!<br>
         <div id="favFilmList"></div>
-        <button onclick="goAgain(event)" id="againBtn">Find A New Match</button>`)
+        <div class="d-flex justify-content-center">
+        <button onclick="goAgain(event)" id="againBtn">Find A New Match</button>
+        </div>`)
         //console.log(results)
         var returnMovies = localStorage.getItem(results)
         console.log(returnMovies)
