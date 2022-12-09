@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test Movie Project</title>
+    <title>Minder</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,30 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   </head>
   <body>
-    <!-- <div class="navbar">
-      <div class="navbar-container">
-        <div class="logo-container">
-          <h1 class="logo">Popcorn Picks</h1>
-        </div>
-        <div class="menu-container">
-          <ul class="menu-list">
-            <li class="menu-list-item active">
-              <a href="#home-screen">Home</li></a>
-            <li class="menu-list-item"> 
-              <a href="#trend">Popular Movie</li></a>
-            <li class="menu-list-item"><a href="#" id="genre-list-item">Genre</a>
-              <div class="genre-dropdown">
-                <select class="form-select" id="genreSelect" aria-label="Default select example">
-                </select>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div> -->
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#home"> Movie Tinder</a>
+        <a class="navbar-brand" href="#home"><i class="fa-solid fa-fire-flame-curved"></i> Minder</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,7 +33,7 @@
               </a>
             </li>
             <li>
-              <div onchange="eraseGenre()">
+              <div onchange="eraseGenre()" id="genreSelect">
                 <select class="form-select form-select-lg" id="genreSelec" aria-label="Default select example" onchange="goMovies()"></select>
               </div>
             </li>
@@ -85,7 +64,7 @@
         </div>
     </div>
     <div class="popular-movies" id="trend">
-      <h1>Popular Movies</h1>
+      <h2>Popular Movies</h2>
     </div>
     <div class="container-bottom">
     <main id="main">
@@ -148,10 +127,4 @@
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="assets/script.js"></script>
   </body>
-
-
-
-    
-     
-
-
+</html>

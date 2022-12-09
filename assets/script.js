@@ -108,20 +108,20 @@ function getMovie(filmId){
 
 function indivMovie(t, o, pI, r){
     var baseImgURL = `https://image.tmdb.org/t/p/original/${pI}`
-    $(movieInfo).append(`
-    <h3>${t}</h3>
-    <h4>${r}</h4>
+    $(movieInfo).append(`<div id="minder-sec">
     <div id="poster">
-    <img src="${baseImgURL}" alt="movie poster" width="200px" height="250px">
+    <img id="minder-img" src="${baseImgURL}" alt="movie poster" width="300px" height="400px">
     </div>
     <div id="description">
-    <p>${o}</p>
+    <h3 id="minder-title">${t}</h3>
+    <h4 id="minder-date">${r}</h4>
+    <p id="minder-desc">${o}</p>
     </div>
     `)
     $(movieInfo).append(`
     <div id="btnHolder">
-    <button id="goodR">Thumbs Up</button> 
-    <button id="badR">Thumbs Down</button>
+    <button id="goodR" class="btn btn-success">Thumbs Up <i class="fa-solid fa-thumbs-up"></i></button>
+    <button id="badR" class="btn btn-danger">Thumbs Down <i class="fa-solid fa-thumbs-down"></i></button>
     </div>`)
 }
 
@@ -133,7 +133,7 @@ function goodValue(event) {
     console.log('random film', filmid[randomFilm])
     results = filmid[randomFilm];
     //var targetFilm = getMovie() 
-    if (eventEl.innerText !== 'Thumbs Up'){
+    if (eventEl.innerText !== 'Thumbs Up '){
         $(movieInfo).html(' ')
         getMovie(results)
     } else {
@@ -144,7 +144,7 @@ function goodValue(event) {
         localStorage.setItem(results, goodFilm.html())
         $(movieInfo).html(`Added to List!<br>
         <div id="favFilmList"></div>
-        <button onclick="goAgain(event)" id="againBtn">Pick A New Genre</button>`)
+        <button onclick="goAgain(event)" id="againBtn">Find A New Match</button>`)
         //console.log(results)
         var returnMovies = localStorage.getItem(results)
         console.log(returnMovies)
@@ -214,7 +214,7 @@ function showMovies(data){
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     var searchValue = search.value
-    debugger;
+    // debugger;
     if (searchValue && searchValue !== '') {
         getMovies(searchUrl + searchValue)
         searchValue = ''

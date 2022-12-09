@@ -169,6 +169,28 @@ body{
     color: white;
     
 }
+
+#goodR{
+    color: rgb(86, 202, 86);
+    background-color: transparent;
+    border: rgb(86, 202, 86) 3px solid;
+    border-radius: 0%;
+}
+
+#badR{
+    color: rgb(227, 78, 78);
+    background-color: transparent;
+    border: rgb(227, 78, 78) 3px solid;
+    border-radius: 0%;
+}
+
+#againBtn{
+    color: hotpink;
+    background-color: transparent;
+    border: hotpink 3px solid;
+    border-radius: 0%;
+}
+
 .content-container{
     
     margin-left: 50px;
@@ -179,9 +201,7 @@ body{
 }
 
 .popular-movies{
-    margin-left: 550px; 
-
-  
+    margin-left: 5%;
 }
 
 .container-bottom{
@@ -191,8 +211,6 @@ body{
     margin-left: 0px;
     box-sizing: border-box;
 }
-
-    
 
 main{
     display:flex;
@@ -302,5 +320,64 @@ main{
 
 .genreHide {
     display: none;
+}
+
+#minder-sec {
+    display: flex;
+}
+
+#minder-title {
+    text-align: center;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 200;
+    position: relative;
+    top: 20%;
+    left: 10%;
+}
+
+#minder-date {
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    font-family: sans-serif;
+    font-weight: 200;
+    position: relative;
+    top: 20%;
+    left: 10%;
+}
+
+#poster {
+    display: flex;
+    align-items: flex-end;
+}
+
+#minder-img {
+    padding: 5%;
+    margin-left: 40%;
+}
+
+#minder-desc {
+    color: black;
+    display: flex;
+    font-size: 15px;
+    font-weight: 600;
+    margin-left: 10%;
+    position: relative;
+    text-indent: 1cm;
+    top: 20%;
+    bottom: 10%;
+    left: 10%;
+}
+
+#description {
+    width: 60%;
+}
+
+/* #againBtn, */
+#btnHolder {
+    position: relative;
+    width: 60%;
+    left: 60%;
 }
 
