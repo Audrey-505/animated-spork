@@ -325,3 +325,9 @@ main{
     left: 50%;
 }
 
+#start {
+    font-family: 'Roboto', sans-serif;
+    font-size: 200%;
+    color: #CF0A0A;
+}
+
