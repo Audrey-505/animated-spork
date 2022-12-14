@@ -1,6 +1,5 @@
 var movieInfo = document.getElementById('movieInfor')
 var nxtPage = document.getElementById('nxtPage')
-//var movieList = JSON.parse(localStorage.getItem('movieList'))|| []
 
 var apiKey = '8c0c06e88273c64c213af99ab1b69d08'
 
@@ -8,42 +7,34 @@ var genreURL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&
 var movieProviders = `https://api.themoviedb.org/3/movie/403/watch/providers?api_key=${apiKey}`
 var trendingMovies = `https://api.themoviedb.org/3/movie/403?api_key=${apiKey}`
 
-var results
-
+var results;
 var title;
 var overview;
 var posterImg;
 var released;
-
 var filmid;
-
 var dataArray;
-var currentData = 0
+
+
+var returnMovies = localStorage.getItem(results)
+if (!returnMovies) {
+    returnMovies = []
+} else {
+    for (i = 0; i < returnMovies.title.length; i++) {
+        $('#favFilmList').html(title[i])
+    }
+}
+
 
 fetch(genreURL)
-.then(function (response){
-    return response.json()
-})
-.then(function (data){
-    console.log(data)
-    var genreList = data.genres
-    //console.log(genreList)
-    // let array = [
-    //     {foo: 1, bar: 2},
-    //     {foo: 3, bar: 4}
-    // ]
-    //   console.log(array.map( e => e.foo ))
-    //console.log((genreList.map(e => e.name)))
-    var names = genreList.map(e => e.name)
-    var id = genreList.map(r => r.id)
-    //console.log(names)
-    //console.log(ids)
-    //genreMovies(names) WORKING
-    //return genreList
-    //genreMovies(genreList)
-    //genreId(ids)
-    populateGenreDropdown(genreList)
-})
+    .then(function (response) {
+        return response.json()
+    })
+    .then(function (data) {
+        console.log(data)
+        var genreList = data.genres
+        populateGenreDropdown(genreList)
+    })
 
 var populateGenreDropdown = (genreList) => {
     var select = document.getElementById('genreSelec')
@@ -56,59 +47,52 @@ var populateGenreDropdown = (genreList) => {
     }
 };
 
-function eraseGenre(){
+function eraseGenre() {
     $('#genreSelect').addClass('genreHide')
 }
 
-function getGenre(){
-var pickedGenre = document.getElementById('genreSelec').value
-return pickedGenre
+function getGenre() {
+    var pickedGenre = document.getElementById('genreSelec').value
+    return pickedGenre
 }
 
-// https://api.themoviedb.org/3/discover/movie?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US&page=10
-function goMovies(){
-var genreChoice = getGenre()
-discoverURL = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreChoice}`
+function goMovies() {
+    var genreChoice = getGenre()
+    discoverURL = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&with_genres=${genreChoice}`
 
-fetch(discoverURL)
-.then(function (response){
-    return response.json()
-})
-.then(function (data){
-    //console.log(data)
-    dataArray = data.results
-    var titles = dataArray.map(e => e.title)
-    var overview = dataArray.map(e => e.overview)
-    var releaseDate = dataArray.map(e => e.release_date)
-    var poster = dataArray.map(e => e.poster_path)
-    filmid = dataArray.map(e => e.id)
-    console.log(filmid)
-    //getMovie(filmid)
-    getMovie(filmid)
-    $('#movieInfor').html('')
-    //discoverMovies(titles, overview, releaseDate, poster)
-})
+    fetch(discoverURL)
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            dataArray = data.results
+            filmid = dataArray.map(e => e.id)
+            console.log(filmid)
+            getMovie(filmid)
+            $('#movieInfor').html('')
+            $('#start').html('')
 
-function getMovie(filmId){
-   var movieURL = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}`
-   fetch(movieURL)
-   .then(function (response){
-    return response.json()
-   })
-   .then(function (data){
-    console.log(data)
-    title = data.title
-    //console.log(title)
-    overview = data.overview
-    posterImg = data.poster_path
-    released = data.release_date
-    indivMovie(title, overview, posterImg, released)
-   })
-}
+        })
 
-function indivMovie(t, o, pI, r){
-    var baseImgURL = `https://image.tmdb.org/t/p/original/${pI}`
-    $(movieInfo).append(`<div id="minder-sec">
+    function getMovie(filmId) {
+        var movieURL = `https://api.themoviedb.org/3/movie/${filmId}?api_key=${apiKey}`
+        fetch(movieURL)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(function (data) {
+                console.log(data)
+                title = data.title
+                overview = data.overview
+                posterImg = data.poster_path
+                released = data.release_date
+                indivMovie(title, overview, posterImg, released)
+            })
+    }
+
+    function indivMovie(t, o, pI, r) {
+        var baseImgURL = `https://image.tmdb.org/t/p/original/${pI}`
+        $(movieInfo).append(`<div id="minder-sec">
     <div id="poster">
     <img id="minder-img" src="${baseImgURL}" alt="movie poster" width="300px" height="400px">
     </div>
@@ -118,58 +102,48 @@ function indivMovie(t, o, pI, r){
     <p id="minder-desc">${o}</p>
     </div>
     `)
-    $(movieInfo).append(`
+        $(movieInfo).append(`
     <div id="btnHolder">
     <button id="goodR" class="btn btn-success">Thumbs Up <i class="fa-solid fa-thumbs-up"></i></button>
     <button id="badR" class="btn btn-danger">Thumbs Down <i class="fa-solid fa-thumbs-down"></i></button>
     </div>`)
-}
+    }
 
-function goodValue(event) {
-    var eventEl = event.target
-    console.log('event: ', eventEl.innerText)
-    console.log('data ', filmid)
-    var randomFilm = Math.floor(Math.random()*filmid.length)
-    console.log('random film', filmid[randomFilm])
-    results = filmid[randomFilm];
-    //var targetFilm = getMovie() 
-    if (eventEl.innerText !== 'Thumbs Up '){
-        $(movieInfo).html(' ')
-        getMovie(results)
-    } else {
-        var goodFilm = $('#movieInfor')
-        //console.log(goodFilm.html())
-        //movieList.push(JSON.stringify(goodFilm.html()))
-        //localStorage.setItem('movieList', movieList)
-        localStorage.setItem(results, goodFilm.html())
-        $(movieInfo).html(`Added to List!<br>
+    function goodValue(event) {
+        var eventEl = event.target
+        console.log('event: ', eventEl.innerText)
+        console.log('data ', filmid)
+        var randomFilm = Math.floor(Math.random() * filmid.length)
+        console.log('random film', filmid[randomFilm])
+        results = filmid[randomFilm];
+        if (eventEl.innerText !== 'Thumbs Up ') {
+            $(movieInfo).html(' ')
+            getMovie(results)
+        } else {
+            var goodFilm = $('#movieInfor')
+            if (returnMovies.includes(title) == false) {
+                returnMovies.push(title)
+                localStorage.setItem(results, goodFilm.html())
+                $(movieInfo).html(`
         <div id="favFilmList"></div>
         <div class="d-flex justify-content-center">
-        <button onclick="goAgain(event)" id="againBtn">Find A New Match</button>
-        </div>`)
-        //console.log(results)
-        var returnMovies = localStorage.getItem(results)
-        console.log(returnMovies)
-        $('#favFilmList').html(returnMovies)
-        $('#btnHolder').html('')
-        // var returnMovies = JSON.parse(localStorage.getItem('movieList'))
-        // for (var i=0; i < returnMovies.length; i++){
-        //     $('#favFilmList').append(returnMovies[i])
-        // }
-        //localStorage.setItem(results, getMovie(results))
+        <button onclick="goAgain(event)" id="againBtn">Find New Matches</button>
+        </div>
+        <div class="d-flex justify-content-center"><h5>Your Top Matches!<br>${returnMovies}</h5></div>`)
+            }
+            console.log(returnMovies)
+            $('#btnHolder').html('')
+        }
+        return
     }
-    return 
-    }
-    
-    movieInfo.onclick = goodValue 
-
+    movieInfo.onclick = goodValue
 }
-function goAgain(event){
+
+function goAgain(event) {
     event.preventDefault()
-    location.reload(); 
+    location.reload();
     console.log('hello')
 }
-
 
 const API_KEY = '8c0c06e88273c64c213af99ab1b69d08';
 const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=8c0c06e88273c64c213af99ab1b69d08&language=en-US`
@@ -183,20 +157,20 @@ var search = document.getElementById('search')
 getMovies(API_URL)
 
 function getMovies(url) {
-    fetch(url).then(res => res.json()).then( data => {
-            console.log(data.results, "here");
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(data.results);
         showMovies(data.results);
-        })
+    })
 }
 
-function showMovies(data){
+function showMovies(data) {
     main.innerHTML = '';
 
     data.forEach(movie => {
-        const {title, poster_path, vote_average, overview} = movie;
+        const { title, poster_path, vote_average, overview } = movie;
         const movieEL = document.createElement('div');
         movieEL.classList.add('movie');
-        movieEL.innerHTML = `<img src="${IMG_URL+poster_path}" alt="${title}">
+        movieEL.innerHTML = `<img src="${IMG_URL + poster_path}" alt="${title}">
         <div class="movie-info">
           <h3>${title}</h3>
           <span class="${getColor(vote_average)}" >${vote_average}</span>
@@ -216,7 +190,6 @@ function showMovies(data){
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     var searchValue = search.value
-    // debugger;
     if (searchValue && searchValue !== '') {
         getMovies(searchUrl + searchValue)
         searchValue = ''
@@ -226,12 +199,12 @@ form.addEventListener('submit', (e) => {
 })
 
 function getColor(vote_average) {
-    if(vote_average > 7){
+    if (vote_average > 7) {
         return 'green'
-    }else if (vote_average  <= 6 ){
+    } else if (vote_average <= 6) {
         return 'red'
-    }else if(vote_average  <= 7) {
+    } else if (vote_average <= 7) {
         return 'yellow'
     }
 }
-    
+
